@@ -6,6 +6,12 @@ function texto() {
     var resultado = document.getElementById('resultado')
         // Esto es para que se transforme el numero a binario
     resultado.innerHTML = parseInt(binario, 2);
+    // Para que en vez de NaN ponga Sigo esperando... (nose pork no va xd)
+    if (binario.length == 0) {
+        if (resultado.innerHTML == "NaN") {
+            resultado.innerHTML = "Sigo esperando..."
+        }
+    }
     // Esto es para que coja el ultimo valor
     var ultimodigito = binario.charAt(binario.length - 1)
     if (ultimodigito == 0 || ultimodigito == 1) {
@@ -17,6 +23,7 @@ function texto() {
     if (binario == '') {
         procesando.innerHTML = ''
     }
+
     // Configuración de errores
     if (ultimodigito >> 1 || ultimodigito >> 9999) {
         error1.innerHTML = 'Has intruducio un numero no binario, introduce una serie de 1 y 0'
@@ -25,9 +32,5 @@ function texto() {
     if (ultimodigito == '') {
         error1.innerHTML = ''
         error2.innerHTML = ''
-    }
-    // Para que en vez de NaN ponga Sigo esperando... (nose pork no va xd)
-    if (resultado.innerHTML == "NaN") {
-        resultado.innerHTML = "Sigo esperando..."
     }
 }
